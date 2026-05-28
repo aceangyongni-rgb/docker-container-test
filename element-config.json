@@ -1,0 +1,8 @@
+{
+    "default_server_config": {
+        "m.homeserver": {
+            "base_url": "https://doily-shelve-random.ngrok-free.dev",
+            "server_name": "192.168.50.254"
+        }
+    }
+}

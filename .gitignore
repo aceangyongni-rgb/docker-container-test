@@ -1,0 +1,18 @@
+# Databases
+*.db
+*.db-shm
+*.db-wal
+
+# Logs
+*/logs/
+*.log
+
+# Sensitive data
+synapse-data/
+mautrix-*/registration.yaml
+matrix_key.pem
+.env
+synapse-start.sh
+
+# Backups
+matrix-backups/

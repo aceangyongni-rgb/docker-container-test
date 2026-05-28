@@ -1,0 +1,8 @@
+[global]
+server_name = "192.168.50.254"
+database_backend = "sqlite"
+database_path = "/var/lib/matrix-conduit"
+allow_registration = true
+port = 8008
+address = "0.0.0.0"
+appservice_registration_files = ["/opt/registration.yaml"]

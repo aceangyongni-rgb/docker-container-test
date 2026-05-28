@@ -1,0 +1,47 @@
+services:
+  matrix-server:
+    image: matrixdotorg/synapse:latest
+    user: root
+    entrypoint: ["sh", "/data/start.sh"]
+    restart: unless-stopped
+    ports:
+      - "8008:8008"
+    volumes:
+      - ./synapse-data:/data
+      - ./synapse-start.sh:/data/start.sh:ro
+    networks:
+      - matrix-net
+
+  mautrix-whatsapp:
+    image: dock.mau.dev/mautrix/whatsapp:latest
+    restart: unless-stopped
+    depends_on:
+      - matrix-server
+    volumes:
+      - ./mautrix-whatsapp:/data
+    networks:
+      - matrix-net
+
+  mautrix-telegram:
+    image: dock.mau.dev/mautrix/telegram:latest
+    restart: unless-stopped
+    depends_on:
+      - matrix-server
+    volumes:
+      - ./mautrix-telegram:/data
+    networks:
+      - matrix-net
+
+  mautrix-discord:
+    image: dock.mau.dev/mautrix/discord:latest
+    restart: unless-stopped
+    depends_on:
+      - matrix-server
+    volumes:
+      - ./mautrix-discord:/data
+    networks:
+      - matrix-net
+
+networks:
+  matrix-net:
+    driver: bridge
